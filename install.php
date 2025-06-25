@@ -68,6 +68,8 @@ try{
 
     );');
     echo"<br>";
+} catch (PDOException $e) {
+    echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
 }
 
 ?>
