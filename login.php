@@ -13,7 +13,7 @@
             <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>" required><br>
             <input type="password" name="password" id="loginPassword" placeholder="Password" required>
             <br>
-            <input type="submit">
+            <button type="submit" id="loginbutton">Login</button>
         </form>
     </body>
 </html>
