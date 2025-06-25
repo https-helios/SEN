@@ -10,38 +10,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" >PUPILS</a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#about">Back To Login</a></li> <!-- change to back to login -->
-                </ul>
-              </div>
-            </div>
-          </nav>
         
-        <div class="FirstName">
-            <h1>
-                FirstName
-            </h1>
-            <?php
-            include_once("connection.php");
-            $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent" ');
-            $stmt->execute();
-            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-              {
-                echo($row["Forename"]);
-              }
-              $_POST["submit"]
-            ?>
-        </div>
     </body>
 </html>
