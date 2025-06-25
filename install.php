@@ -1,4 +1,6 @@
 <?php
+include_once("connection.php");
+
 try{
     //creating user schema
     $db->exec( 'CREATE SCHEMA IF NOT EXISTS "SEN";');
@@ -65,7 +67,7 @@ try{
         BarrierID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
 
     )');
-    echo"<br>"
+    echo"<br>";
 }
 
 ?>
