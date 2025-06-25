@@ -30,6 +30,18 @@ try{
     $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblStrat" CASCADE;');
     echo"<br> Table 'tblStrat' has been dropped";
 
+    //dropping Stu-Diag
+    $db->exec('DROP TABLE IF EXISTS "SEN"."tblStu-Diag" CASCADE;');
+    echo"<br> Table 'tblStu-Diag' has been dropped";
+
+    //dropping Bar-Strat
+    $db->exec('DROP TABLE IF EXISTS "SEN"."tblBar-Strat" CASCADE;');
+    echo "<br> Table 'tblBar-Strat' has been dropped";
+
+    //dropping Diag-Bar
+    $db->exec('DROP TABLE IF EXISTS "SEN"."tblDiag-Bar" CASCADE;');
+    echo "<br> Table 'tblDiag-bar' has been dropped";
+
     //creating Tutor Table
     $db->exec('
     CREATE TABLE "SEN"."tblTutor" (
@@ -60,13 +72,43 @@ try{
     );');
     echo"<br> Table 'tblDiag' has been created successfully";
 
-    //creating Barrrier Table
+    //creating Barrier Table
     $db->exec( '
     CREATE TABLE "SEN"."tblBarrier" (
         BarrierID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        Label text NOT NULL
 
     );');
-    echo"<br>";
+    echo"<br> Table 'tblBarrier' has been created successfully";
+
+    //creating Strategy Table
+    $db->exec('
+    CREATE TABLE "SEN"."tblaStrat" (
+        StratID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        Label text NOT NULL
+    );');
+
+    //creating Stu-Diag
+    $db->exec('
+    CREATE TABLE "SEN"."tblStu-Diag" (
+        StudentID uuid NOT NULL REFERENCES "SEN"."tblStudent"(StudentID) ON DELETE CASCADE,
+        TutorID uuid NOT NULL REFERENCES "SEN"."tblTutor"(TutorID) ON DELETE CASCADE
+    );');
+
+    //creating Bar-Strat
+    $db->exec('
+    CREATE TABLE "SEN"."tblBar-Strat"(
+        BarrierID uuid NOT NULL REFERENCES "SEN"."tblBarrier"(BarrierID) ON DELETE CASCADE,
+        StratID uuid NOT NULL REFERENCES "SEN"."tblStrat"(StratID) ON DELETE CASCADE
+    );');
+
+    //creating Diag-Bar
+    $db->exec('
+    CREATE TABLE "SEN"."tblDiag-Bar"(
+        DiagID uuid NOT NULL REFERENCES "SEN"."tblDiag"(DiagID) ON DELETE CASCADE,
+        BarrierID uuid NOT NULL REFERENCES "SEN"."tblBarrier"(BarrierID) ON DELETE CASCADE
+    );');
+
 } catch (PDOException $e) {
     echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
 }
