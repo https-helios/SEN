@@ -65,7 +65,7 @@ try{
         BarrierID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
 
     )');
-    echo"<br>
+    echo"<br>"
 }
 
 ?>
