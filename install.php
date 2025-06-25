@@ -87,6 +87,7 @@ try{
         StratID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         Label text NOT NULL
     );');
+    echo"<br> Table 'tblStrat' has been created successfully";
 
     //creating Stu-Diag
     $db->exec('
@@ -94,6 +95,7 @@ try{
         StudentID uuid NOT NULL REFERENCES "SEN"."tblStudent"(StudentID) ON DELETE CASCADE,
         TutorID uuid NOT NULL REFERENCES "SEN"."tblTutor"(TutorID) ON DELETE CASCADE
     );');
+    echo"<br> Table 'tblStu-Diag' has been created successfully";
 
     //creating Bar-Strat
     $db->exec('
@@ -101,6 +103,7 @@ try{
         BarrierID uuid NOT NULL REFERENCES "SEN"."tblBarrier"(BarrierID) ON DELETE CASCADE,
         StratID uuid NOT NULL REFERENCES "SEN"."tblStrat"(StratID) ON DELETE CASCADE
     );');
+    echo"<br> Table 'tblBar-Strat' has been created successfully";
 
     //creating Diag-Bar
     $db->exec('
@@ -108,6 +111,7 @@ try{
         DiagID uuid NOT NULL REFERENCES "SEN"."tblDiag"(DiagID) ON DELETE CASCADE,
         BarrierID uuid NOT NULL REFERENCES "SEN"."tblBarrier"(BarrierID) ON DELETE CASCADE
     );');
+    echo"<br> Table 'tblDiag-Bar' has been created successfully";
 
 } catch (PDOException $e) {
     echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
