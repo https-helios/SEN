@@ -30,6 +30,13 @@ try{
     $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblStrat" CASCADE;');
     echo"<br> Table 'tblStrat' has been dropped";
 
+    //dropping Stu-Diag
+    $db->exec('DROP TABLE IF EXISTS "SEN"."tblStu-Diag" CASCADE;');
+    echo"<br> Table 'tblStu-Diag' has been dropped";
+
+    //dropping Bar-Strat
+    $db->exec('DROP');//STILL NOT FINISHED
+
     //creating Tutor Table
     $db->exec('
     CREATE TABLE "SEN"."tblTutor" (
@@ -60,13 +67,22 @@ try{
     );');
     echo"<br> Table 'tblDiag' has been created successfully";
 
-    //creating Barrrier Table
+    //creating Barrier Table
     $db->exec( '
     CREATE TABLE "SEN"."tblBarrier" (
         BarrierID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        Label text NOT NULL
 
     );');
-    echo"<br>";
+    echo"<br> Table 'tblBarrier' has been created successfully";
+
+    //creating Strategy Table
+    $db->exec('
+    CREATE TABLE "SEN"."tblaStrat" (
+        StratID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        Label text NOT NULL
+    );');
+
 } catch (PDOException $e) {
     echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
 }
