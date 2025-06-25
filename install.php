@@ -9,7 +9,7 @@ try{
 
     //creating UUID extention for random numbers
     $db->exec( 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
-    echo"<br> Extention for UUID has been created";
+    echo"<br> Extension for UUID has been created";
 
     //dropping Student table
     $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblStudent" CASCADE;');
@@ -31,18 +31,6 @@ try{
     $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblStrat" CASCADE;');
     echo"<br> Table 'tblStrat' has been dropped";
 
-    //creating Student Table
-    $db->exec( '
-    CREATE TABLE "SEN"."tblStudent" (
-        StudentID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-        Forename text NOT NULL,
-        Surname text NOT NULL,
-        YearGroup smallint,
-        TutorID smallint,
-        House text NOT NULL
-    );');
-    echo'<br>Table "tblStudent" has been created successfully';
-
     //creating Tutor Table
     $db->exec( '
     CREATE TABLE "SEN"."tblTutor" (
@@ -52,6 +40,18 @@ try{
         House text NOT NULL
     );');
     echo"<br> Table 'tblTutor' has been created successfully";
+    
+    //creating Student Table
+    $db->exec( '
+    CREATE TABLE "SEN"."tblStudent" (
+        StudentID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        Forename text NOT NULL,
+        Surname text NOT NULL,
+        YearGroup NUMERIC(2,0),
+        TutorID uuid NOT NULL REFERENCES "SEN"."tblTutor"(TutorID) ON DELETE CASCADE,
+        House text NOT NULL
+    );');
+    echo'<br>Table "tblStudent" has been created successfully';
 
     //creating Diagnosis table
     $db->exec( '
