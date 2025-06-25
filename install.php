@@ -71,4 +71,30 @@ try{
     echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
 }
 
+try{
+    //Create user schema
+    $db->exec( 'CREATE SCHEMA IF NOT EXISTS "user";');
+    echo"<br><br>Schema 'user' created successfully";
+
+    //Drops tbluser
+    $db->exec( 'DROP TABLE IF EXISTS "user"."tbluser" CASCADE;');
+    echo"<br> Table 'tbluser' has been dropped";
+
+    //Create tbluser
+    $db->exec('
+    CREATE TABLE "user"."tbluser" (
+        user_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        username text NOT NULL UNIQUE,
+        forename text NOT NULL,
+        surname text NOT NULL,
+        dob date NOT NULL,
+        password text NOT NULL,
+        two_fa_secret text,
+        balance NUMERIC(14, 2) NOT NULL
+    );');
+    echo"<br>Table 'tbluser' created successfully.";
+} catch (PDOException $e) {
+    echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
+}
+
 ?>
