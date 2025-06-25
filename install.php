@@ -40,7 +40,7 @@ try{
         YearGroup smallint,
         TutorID smallint,
         House text NOT NULL
-    )');
+    );');
     echo'<br>Table "tblStudent" has been created successfully';
 
     //creating Tutor Table
@@ -50,7 +50,7 @@ try{
         Forename text NOT NULL,
         Surname text NOT NULL,
         House text NOT NULL
-    )');
+    );');
     echo"<br> Table 'tblTutor' has been created successfully";
 
     //creating Diagnosis table
@@ -58,7 +58,7 @@ try{
     CREATE TABLE "SEN"."tblDiag" (
         DiagID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         Label text NOT NULL
-    )');
+    );');
     echo"<br> Table 'tblDiag' has been created successfully";
 
     //creating Barrrier Table
@@ -66,7 +66,7 @@ try{
     CREATE TABLE "SEN"."tblBarrier" (
         BarrierID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
 
-    )');
+    );');
     echo"<br>";
 }
 
