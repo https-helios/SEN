@@ -58,7 +58,7 @@ try{
         StudentID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         Forename text NOT NULL,
         Surname text NOT NULL,
-        YearGroup NUMERIC(2,0),
+        YearGroup smallint,
         TutorID uuid NOT NULL REFERENCES "SEN"."tblTutor"(TutorID) ON DELETE CASCADE,
         House text NOT NULL
     );');
@@ -136,7 +136,7 @@ try{
         dob date NOT NULL,
         password text NOT NULL,
         two_fa_secret text,
-        balance NUMERIC(14, 2) NOT NULL
+        role smallint
     );');
     echo"<br>Table 'tbluser' created successfully.";
 } catch (PDOException $e) {
