@@ -8,7 +8,7 @@ try{
     $db->exec("");
 
     //creating UUID extention for random numbers
-    $db->exec( 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp":');
+    $db->exec( 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
     echo"<br> Extention for UUID has been created";
 
     //dropping Student table
