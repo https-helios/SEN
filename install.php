@@ -5,7 +5,6 @@ try{
     //creating user schema
     $db->exec( 'CREATE SCHEMA IF NOT EXISTS "SEN";');
     echo"<br><br>Schema 'SEN' created successfully";
-    $db->exec("");
 
     //creating UUID extention for random numbers
     $db->exec( 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
