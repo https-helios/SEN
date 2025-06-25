@@ -133,8 +133,9 @@ try{
         username text NOT NULL UNIQUE,
         forename text NOT NULL,
         surname text NOT NULL,
-        dob date NOT NULL,
         password text NOT NULL,
+        email text NOT NULL,
+        dob date NOT NULL,
         two_fa_secret text,
         role smallint
     );');
