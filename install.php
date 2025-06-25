@@ -11,27 +11,27 @@ try{
     echo"<br> Extension for UUID has been created";
 
     //dropping Student table
-    $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblStudent" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblStudent" CASCADE;');
     echo"<br> Table 'tblStudent' has been dropped";
 
     //dropping Tutor table
-    $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblTutor" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblTutor" CASCADE;');
     echo"<br> Table 'tblTutor' has been dropped";
 
     //dropping Diagnosis table
-    $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblDiag" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblDiag" CASCADE;');
     echo"<br> Table 'tblDiag' has been dropped";
 
     //dropping Barrier table
-    $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblBarrier" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblBarrier" CASCADE;');
     echo"<br> Table 'tblBarrier' has been dropped";
 
     //dropping Strategies table
-    $db-exec( 'DROP TABLE IF EXISTS "SEN"."tblStrat" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "SEN"."tblStrat" CASCADE;');
     echo"<br> Table 'tblStrat' has been dropped";
 
     //creating Tutor Table
-    $db->exec( '
+    $db->exec('
     CREATE TABLE "SEN"."tblTutor" (
         TutorID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         Forename text NOT NULL,
