@@ -83,7 +83,7 @@ try{
 
     //creating Strategy Table
     $db->exec('
-    CREATE TABLE "SEN"."tblaStrat" (
+    CREATE TABLE "SEN"."tblStrat" (
         StratID uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         Label text NOT NULL
     );');
