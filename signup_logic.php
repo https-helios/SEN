@@ -26,17 +26,6 @@ $role = 0;
 try {
     $conn->beginTransaction(); // Start a transaction
 
-    while (true) {
-        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM tblusers WHERE username = :username");
-        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row["count"] == 0) {
-            break;
-        }
-        $username = $baseusername . $counter;
-        $counter++;
-    }
     // Secure password hashing
     $hashpassword = password_hash($pwd, PASSWORD_BCRYPT);
 
