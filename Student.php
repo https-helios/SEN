@@ -26,11 +26,12 @@
             // $_POST["submit"]
 
             try{
-                $stmt = $db->prepare('SELECT "TutorID" AND "Forename" FROM "SEN"."tblTutor" ORDER BY "Forename"');
+                $stmt = $db->prepare('SELECT "TutorID","Forename" FROM "SEN"."tblTutor" ORDER BY "Forename"');
                 $stmt->execute();
     
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
                     $TutorID = htmlspecialchars($row["TutorID"]);
+                    $Forename = htmlspecialchars($row["Forename"]);
                     echo '<option value="' . $TutorID . '">' . $Forename . '</option>';
 
                 }
