@@ -8,7 +8,7 @@
     <body>
         <form action="addStudent.php" method="post">
             Forename:<input type = "text" name="Forename"><br>
-            Surname:<input type = "text" name="Authors"><br>
+            Surname:<input type = "text" name="Surname"><br>
             House:<input type ="text" name ="House"><br>
             YearGroup:<input type ="number" name="YearGroup"><br>
             <input type="submit" value="Add Student">

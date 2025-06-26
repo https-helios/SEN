@@ -17,7 +17,7 @@ conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_
 def index():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute('SELECT * FROM "SEN"."tblStudent" ORDER BY StudentID')
-    carbrands = cur.fetchall()
+    tblStudent = cur.fetchall()
     return render_template('index.html', tblStudent=tblStudent)
 
 @app.route("/get_child_categories",methods=["POST","GET"])
@@ -25,9 +25,12 @@ def get_child_categories():
     if request.method == 'POST':
         parent_id = request.form['parent_id']
         print(parent_id)
-        cur.execute('SELECT FROM "SEN"."tblStudent" WHERE StudentID = %s', [parent_id])
-        cur.fetchall()
-    return jsonify(parent_id)    
+        cur.execute('SELECT * FROM "SEN"."tblStudent" WHERE StudentID = %s', [parent_id])
+        result = cur.fetchall()
+            if result:
+                return jsonify([dict(row) for row in result])
+            else:
+                return jsonify({"error": "No student found"})   
 
 if __name__ == "__main__":
     app.run(debug=True)
