@@ -39,15 +39,6 @@
                 <option value = '{{row.StudentID}}'> {{row.Forename}} </option>
                 {% endfor %}
               </select>
-              <?php
-              include_once("connection.php");
-              $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent" ');
-              $stmt->execute();
-              while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-                {
-                  echo($row["Forename"]);
-                }
-              ?>
           </div>
     </body>
 </html>
