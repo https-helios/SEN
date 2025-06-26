@@ -14,11 +14,11 @@ array_map("htmlspecialchars", $_POST);
 
 $stmt=$conn->prepare('INSERT INTO "SEN"."tblStudent"(Forename, Surname, House, YearGroup)
 VALUES (:Forename, :Surname, :House, :YearGroup)');
-$stmt->bindParam(":Name", $_POST["Name"]);
-$stmt->bindParam(":Email", $_POST["Email"]);
-$stmt->bindParam(":Password", $hashed_password);
-$stmt->bindParam(":CreatedAt", $date);
-$stmt->bindParam(":role", $role);
+$stmt->bindParam(":Forename", $_POST["Forename"]);
+$stmt->bindParam(":Surname", $_POST["Surname"]);
+$stmt->bindParam(":House", $_POST["House"]);
+$stmt->bindParam(":YearGroup", $_POST["YearGroup"]);
+
 $stmt->execute();
 $conn=null;
 ?>
