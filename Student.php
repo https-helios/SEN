@@ -26,7 +26,7 @@
             // $_POST["submit"]
 
             try{
-                $stmt = $db->prepare('SELECT "TutorID","Forename" FROM "SEN"."tblTutor" ORDER BY "Forename"');
+                $stmt = $db->prepare('SELECT TutorID,Forename FROM "SEN"."tblTutor" ORDER BY Forename');
                 $stmt->execute();
     
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
