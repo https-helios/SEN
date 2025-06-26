@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import psycopg2
 import psycopg2.extras
 
-app = False(__name__)
+app = Flask(__name__)
 
 app.secret_key = "caircocoders-ednalan"
 
@@ -16,7 +16,7 @@ conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_
 @app.route('/')
 def index():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    result = cur.execute('SELECT * FROM "SEN"."tblStudent" ORDER BY StudentID')
+    cur.execute('SELECT * FROM "SEN"."tblStudent" ORDER BY StudentID')
     carbrands = cur.fetchall()
     return render_template('index.html', tblStudent=tblStudent)
 
