@@ -18,7 +18,7 @@
             include_once("connection.php");
             $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent"');
             $stmt->execute();
-            while($row=$statement->fetch(PDO::FETCH_ASSOC))
+            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
                 {
                     echo($row["Forename"].", ".$row["Surname"].",".$row["House"].",".$row["YearGroup"]."<br>");
                 }
