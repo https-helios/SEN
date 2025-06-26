@@ -11,6 +11,7 @@
             Surname:<input type = "text" name="Surname"><br>
             House:<input type ="text" name ="House"><br>
             YearGroup:<input type ="number" name="YearGroup"><br>
+            <select name = "StudentID">
             <input type="submit" value="Add Student">
         </form>
         <?php
@@ -23,6 +24,19 @@
                 }
 
             $_POST["submit"]
+
+            try{
+                $stmt = $db->prepare('SELECT "TutorID" FROM "SEN"."tblTutor" ORDER BY "TutorID"');
+                $stmt->execute();
+    
+                while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $TutorID = htmlspecialchars($row["TutorID"]);
+                    echo '<option value =\"TutorID\"></option>';
+                }
+            } catch (PDOException $e) {
+                echo "Database error: " . $e->getMessage();
+            }
+
         ?>
     </body>    
 </html>
