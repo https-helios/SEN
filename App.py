@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 import psycopg2
 import psycopg2.extras
 
@@ -19,6 +19,13 @@ def index():
     cur.execute('SELECT * FROM "SEN"."tblStudent" ORDER BY StudentID')
     carbrands = cur.fetchall()
     return render_template('index.html', tblStudent=tblStudent)
+
+@app.route("/get_child_categories",methods=["POST","GET"])
+def get_child_categories():
+    if request.method == 'POST':
+        parent_id = request.form['parent_id']
+        print(parent_id)
+    return jsonify(parent_id)    
 
 if __name__ == "__main__":
     app.run(debug=True)
