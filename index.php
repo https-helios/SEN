@@ -32,6 +32,10 @@
               <h1>
                   FirstName
               </h1>
+              <label>First Name</lable>
+              <select name = "FistNameSearch">
+                <option value = "" selected = "selected"></option>
+              </select>
               <?php
               include_once("connection.php");
               $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent" ');
