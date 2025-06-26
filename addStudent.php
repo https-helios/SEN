@@ -22,7 +22,7 @@ try{
     $stmt->bindParam(":YearGroup", $_POST["YearGroup"]);
 
     $stmt->execute();
-    $conn=null;
+    $db=null;
 }
 catch (PDOException $e) {
     echo "<br><br><br><b>Error: " . $e->getMessage() . "</b>";
