@@ -33,35 +33,32 @@
         </script>
     </head>
     <body>
-      <nav class="navbar navbar-default navbar-fixed-top">
-              <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" >PUPILS</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" >PUPILS</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">Back To Login</a></li> <!-- change to back to login -->
-                  </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#about">Back To Login</a></li> <!-- change to back to login -->
+                    </ul>
                 </div>
-              </div>
-            </nav>
-          
-          <div class="FirstName">
-              <h1>
-                  FirstName
-              </h1>
-              <label>First Name</lable>
-              <select name = "search_category" id="search_category_id" class = "form-control">
+            </div>
+        </nav>
+        <div class="FirstName">
+            <h1>First Name</h1>
+            <label>First Name</lable>
+            <select name = "search_category" id="search_category_id" class = "form-control">
                 <option value = "" selected = "selected"></option>
                 {% for row in tblStudent %}
                 <option value = '{{row.Forename}}'></option>
                 {% endfor %}
-              </select>
-          </div>
+            </select>
+        </div>
     </body>
-</html>
+<html
