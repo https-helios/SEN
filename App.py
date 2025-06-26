@@ -25,7 +25,8 @@ def get_child_categories():
     if request.method == 'POST':
         parent_id = request.form['parent_id']
         print(parent_id)
-        cur.execute("SELECT * FROM ")
+        cur.execute('SELECT FROM "SEN"."tblStudent" WHERE StudentID = %s', [parent_id])
+        cur.fetchall()
     return jsonify(parent_id)    
 
 if __name__ == "__main__":
