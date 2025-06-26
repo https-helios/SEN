@@ -119,7 +119,7 @@ try{
 }
 
 try{
-    //Create user schema
+    //Create app_user schema
     $db->exec( 'CREATE SCHEMA IF NOT EXISTS "app_user";');
     echo"<br><br>Schema 'user' created successfully";
 
