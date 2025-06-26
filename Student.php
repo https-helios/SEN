@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Add Book Page
+            Add Student Page
         </title>
     </head>
     <body>
@@ -13,7 +13,6 @@
             YearGroup:<input type ="number" name="YearGroup"><br>
             <input type="submit" value="Add Student">
         </form>
-        <h2>Current Books</h2>
         <?php
             include_once("connection.php");
             $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent"');
