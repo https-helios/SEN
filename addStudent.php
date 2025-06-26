@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Add Book Page
-        </title>
-    </head>
-    <body>
-        <form action="addStudent.php" method="post">
-            Forename:<input type = "text" name="Forename"><br>
-            Surname:<input type = "text" name="Authors"><br>
-            House:<input type ="text" name ="House"><br>
-            YearGroup:<input type ="number" name="YearGroup"><br>
-            <input type="submit" value="Add Student">
-        </form>
-        <h2>Current Books</h2>
-        <?php
-            include_once("connection.php");
-            $stmt=$conn->prepare('SELECT * FROM "SEN"."tblStudent"');
-            $stmt->execute();
-            while($row=$statement->fetch(PDO::FETCH_ASSOC))
-                {
-                    echo($row["Forename"].", ".$row["Surname"].",".$row["House"].",".$row["YearGroup"]."<br>");
-                }
 
-            $_POST["submit"]
-        ?>
-    </body>    
-</html>
+<?php
+session_start();
+include_once("connection.php");
+//header("location:Users.php");
+array_map("htmlspecialchars", $_POST);
+#below from line 8-12 is to check for array keys
+// if (isset($array['Email'])) {
+//     echo $array['Email'];
+// } else {
+//     echo 'Key does not exist';
+// }
+
+
+$stmt=$conn->prepare('INSERT INTO "SEN"."tblStudent"(Forename, Surname, House, YearGroup)
+VALUES (:Forename, :Surname, :House, :YearGroup)');
+$stmt->bindParam(":Name", $_POST["Name"]);
+$stmt->bindParam(":Email", $_POST["Email"]);
+$stmt->bindParam(":Password", $hashed_password);
+$stmt->bindParam(":CreatedAt", $date);
+$stmt->bindParam(":role", $role);
+$stmt->execute();
+$conn=null;
+?>
+
