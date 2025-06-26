@@ -3,7 +3,7 @@ $allow_output = true;
 include_once("connection.php");
 
 try{
-    //creating user schema
+    //creating SEN schema
     $db->exec( 'CREATE SCHEMA IF NOT EXISTS "SEN";');
     echo"<br><br>Schema 'SEN' created successfully";
 
@@ -120,16 +120,16 @@ try{
 
 try{
     //Create user schema
-    $db->exec( 'CREATE SCHEMA IF NOT EXISTS "user";');
+    $db->exec( 'CREATE SCHEMA IF NOT EXISTS "app_user";');
     echo"<br><br>Schema 'user' created successfully";
 
     //Drops tbluser
-    $db->exec( 'DROP TABLE IF EXISTS "user"."tbluser" CASCADE;');
+    $db->exec( 'DROP TABLE IF EXISTS "app_user"."tbluser" CASCADE;');
     echo"<br> Table 'tbluser' has been dropped";
 
     //Create tbluser
     $db->exec('
-    CREATE TABLE "user"."tbluser" (
+    CREATE TABLE "app_user"."tbluser" (
         user_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
         username text NOT NULL UNIQUE,
         forename text NOT NULL,

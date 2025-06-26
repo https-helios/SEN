@@ -29,7 +29,7 @@ try {
     // Secure password hashing
     $hashpassword = password_hash($pwd, PASSWORD_BCRYPT);
 
-    $sql = 'INSERT INTO "user"."tbluser" (username, forname, surname, password, email, dob, role) VALUES (:username, :forename, :surname, :password, :email, :dob, :role)';
+    $sql = 'INSERT INTO "app_user"."tbluser" (username, forname, surname, password, email, dob, role) VALUES (:username, :forename, :surname, :password, :email, :dob, :role)';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $_POST["username"]);
     $stmt->bindParam(':forename', $_POST["forename"]);
