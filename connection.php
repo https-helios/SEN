@@ -16,11 +16,15 @@ try {
     $stmt->execute([':dbname' => $dbname]);
 
     if ($stmt->fetch()) {
-        echo "Database '$dbname' already exists.\n";
+        if (!empty($allow_output)) {
+            echo "Database '$dbname' already exists.\n";
+        }
     } else {
         // Create the database
         $conn->exec("CREATE DATABASE \"$dbname\"");
-        echo "Database '$dbname' created successfully.\n";
+        if (!empty($allow_output)) {
+            echo "Database '$dbname' created successfully.\n";
+        }
     }
 
     // Connect to the target database
@@ -28,7 +32,9 @@ try {
     $db = new PDO($dsnTarget, $username, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "Connected to '$dbname' successfully.\n";
+    if (!empty($allow_output)) {
+        echo "Connected to '$dbname' successfully.\n";
+    }
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }

@@ -1,4 +1,5 @@
 <?php
+$allow_output = true;
 include_once("connection.php");
 
 try{
