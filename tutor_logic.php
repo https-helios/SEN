@@ -1,4 +1,5 @@
 <?php
+$allow_output = true;
 include_once("connection.php");
 session_start();
 print_r($_POST);
@@ -7,24 +8,25 @@ print_r($_POST);
 $_POST = array_map("htmlspecialchars", $_POST);
 
 try {
-    $conn->beginTransaction(); // Start a transaction
+    $db->beginTransaction(); // Start a transaction
 
 
-    $sql = 'INSERT INTO "SEN"."tblTutor" (forname, surname, house) VALUES (:forename, :surname, :house)';
-    $stmt = $conn->prepare($sql);
+    $sql = 'INSERT INTO "SEN"."tblTutor" (Forename, Surname, House) VALUES (:forename, :surname, :house)';
+    $stmt = $db->prepare($sql);
     $stmt->bindParam(':forename', $_POST["forename"]);
     $stmt->bindParam(':surname', $_POST["surname"]);
     $stmt->bindParam(':house', $_POST["house"]);
-    $stmt->execute();
+    if ($stmt->execute()) {
+        echo "Statement executed.<br>";
+    } else {
+        echo "Statement failed.<br>";
+        print_r($stmt->errorInfo());
+    }
 
-    $conn->commit(); // Commit transaction
-
-    // Redirect with username in URL
-    header("Location: login.php?user=" . urlencode($username));
-    exit();
+    $db->commit(); // Commit transaction
 
 } catch (PDOException $e) {
-    $conn->rollBack(); // Rollback transaction if an error occurs
+    $db->rollBack(); // Rollback transaction if an error occurs
     die("Error: " . $e->getMessage());
 }
 ?>
