@@ -9,15 +9,27 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script type = "text/javascript">
-          $(document).ready(function(){
-            $('#search_category_id').change(function(){
-              $.post("/get_child_categories", {
-                parent_id:$('#search_category_id').val(),
-              },function(response){
-                $('#show_sub_categories').html(response);
-              });
-            });
-          });
+          // $(document).ready(function(){
+          //   $('#search_category_id').change(function(){
+          //     $.post("/get_child_categories", {
+          //       parent_id:$('#search_category_id').val(),
+          //     },function(response){
+          //       $('#show_sub_categories').html(response);
+          //     });
+          //   });
+          // });
+          function(response){
+            if (response.error) {
+              $('#show_sub_categories').html('<p>No student found.</p>');
+            } else {
+              const student = response[0];
+              $('#show_sub_categories').html(
+                `<p>Name: ${student.forename} ${student.surname}</p>
+                <p>House: ${student.house}</p>
+                <p>Year Group: ${student.yeargroup}</p>`
+              );
+            }
+          }
         </script>
     </head>
     <body>
