@@ -11,18 +11,16 @@
             Surname:<input type = "text" name="Surname"><br>
             House:<input type ="text" name ="House"><br>
             YearGroup:<input type ="number" name="YearGroup"><br>
-            <select name = "TutorID"></select>
-            <input type="submit" value="Add Student">
-        </form>
+            <select name = "TutorID">
         <?php
             include_once("connection.php");
-            $stmt=$db->prepare('SELECT * FROM "SEN"."tblStudent"');
+            /* $stmt=$db->prepare('SELECT * FROM "SEN"."tblStudent"');
             $stmt->execute();
             while($row=$stmt->fetch(PDO::FETCH_ASSOC))
                 {
                     echo($row["Forename"].", ".$row["Surname"].",".$row["House"].",".$row["YearGroup"]."<br>");
                 }
-
+ */
             // $_POST["submit"]
 
             try{
@@ -40,5 +38,8 @@
             }
 
         ?>
+        </select>
+        <input type="submit" value="Add Student">
+        </form>
     </body>    
 </html>
