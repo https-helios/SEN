@@ -47,7 +47,7 @@
               <select name = "search_category" id="search_category_id" class = "form-control">
                 <option value = "" selected = "selected"></option>
                 {% for row in tblStudent %}
-                <option value = '{{row.StudentID}}'> {{row.Forename}} </option>
+                <option value = '{{row.Forename}}'></option>
                 {% endfor %}
               </select>
           </div>
