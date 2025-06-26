@@ -11,30 +11,31 @@
             Surname:<input type = "text" name="Surname"><br>
             House:<input type ="text" name ="House"><br>
             YearGroup:<input type ="number" name="YearGroup"><br>
-            <select name = "TutorID">
+            <select name = "TutorID"> 
         <?php
             include_once("connection.php");
-            /* $stmt=$db->prepare('SELECT * FROM "SEN"."tblStudent"');
-            $stmt->execute();
-            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-                {
-                    echo($row["Forename"].", ".$row["Surname"].",".$row["House"].",".$row["YearGroup"]."<br>");
-                }
- */
-            // $_POST["submit"]
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
 
-            try{
-                $stmt = $db->prepare('SELECT TutorID,Forename FROM "SEN"."tblTutor" ORDER BY Forename');
-                $stmt->execute();
-    
-                while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $TutorID = htmlspecialchars($row["TutorID"]);
-                    $Forename = htmlspecialchars($row["Forename"]);
+            // Prepare and execute
+            $stmt = $db->prepare('SELECT * FROM "SEN"."tblTutor" ORDER BY Forename');
+            if (!$stmt->execute()) {
+                $error = $stmt->errorInfo();
+                echo "SQL Error: " . $error[2];
+                exit;
+            }
+
+            // Fetch and display all rows
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($rows) === 0) {
+                echo "No tutors found.";
+            } else {
+                foreach ($rows as $row) {
+                    //print_r($row);
+                    $TutorID = htmlspecialchars($row["tutorid"]);
+                    $Forename = htmlspecialchars($row["forename"]);
                     echo '<option value="' . $TutorID . '">' . $Forename . '</option>';
-
                 }
-            } catch (PDOException $e) {
-                echo "Database error: " . $e->getMessage();
             }
 
         ?>

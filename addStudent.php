@@ -14,12 +14,13 @@ print_r($_POST);
 
 try{
 
-    $stmt=$db->prepare('INSERT INTO "SEN"."tblStudent"(Forename, Surname, House, YearGroup)
-    VALUES (:Forename, :Surname, :House, :YearGroup)');
+    $stmt=$db->prepare('INSERT INTO "SEN"."tblStudent"(forename, surname, yeargroup, tutorid, house)
+    VALUES (:Forename, :Surname, :YearGroup, :TutorID, :House)');
     $stmt->bindParam(":Forename", $_POST["Forename"]);
     $stmt->bindParam(":Surname", $_POST["Surname"]);
-    $stmt->bindParam(":House", $_POST["House"]);
     $stmt->bindParam(":YearGroup", $_POST["YearGroup"]);
+    $stmt->bindParam(":TutorID", $_POST["TutorID"]);
+    $stmt->bindParam(":House", $_POST["House"]);
 
     $stmt->execute();
     $db=null;
