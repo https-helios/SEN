@@ -4,6 +4,7 @@ session_start();
 include_once("connection.php");
 //header("location:Users.php");
 array_map("htmlspecialchars", $_POST);
+print_r($_POST);
 #below from line 8-12 is to check for array keys
 // if (isset($array['Email'])) {
 //     echo $array['Email'];
