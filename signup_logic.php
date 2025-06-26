@@ -26,21 +26,10 @@ $role = 0;
 try {
     $conn->beginTransaction(); // Start a transaction
 
-    while (true) {
-        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM tblusers WHERE username = :username");
-        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row["count"] == 0) {
-            break;
-        }
-        $username = $baseusername . $counter;
-        $counter++;
-    }
     // Secure password hashing
     $hashpassword = password_hash($pwd, PASSWORD_BCRYPT);
 
-    $sql = 'INSERT INTO "user"."tbluser" (username, forname, surname, password, email, dob, role) VALUES (:username, :forename, :surname, :password, :email, :dob, :role)';
+    $sql = 'INSERT INTO "app_user"."tbluser" (username, forname, surname, password, email, dob, role) VALUES (:username, :forename, :surname, :password, :email, :dob, :role)';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $_POST["username"]);
     $stmt->bindParam(':forename', $_POST["forename"]);

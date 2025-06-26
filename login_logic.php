@@ -9,7 +9,7 @@ $_POST = array_map('htmlspecialchars', $_POST);
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 
-$stmt = $db->prepare('SELECT * FROM "user"."tbluser" WHERE username = :username');
+$stmt = $db->prepare('SELECT * FROM "app_user"."tbluser" WHERE username = :username');
 $stmt->bindParam(":username", $username, PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
